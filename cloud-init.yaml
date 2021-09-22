@@ -1,0 +1,9 @@
+#cloud-config
+# vim: syntax=yaml
+
+runcmd:
+- export HOME='/home/ubuntu'
+- export USER='ubuntu'
+- cd $HOME
+- curl -L -o cloud-init.sh 'https://raw.githubusercontent.com/scotty-c/dev/main/nerdctl/cloud-init.sh'
+- bash cloud-init.sh | tee output.txt
