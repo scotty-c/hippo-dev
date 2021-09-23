@@ -23,14 +23,15 @@ rm packages-microsoft-prod.deb
 sudo apt-get update; \
   sudo apt-get install -y apt-transport-https && \
   sudo apt-get update && \
-  sudo apt-get install -y aspnetcore-runtime-5.0
+  sudo apt-get install -y aspnetcore-runtime-5.0 \
+                          dotnet-sdk-5.0 
 
 echo "# wagi..."
 VERSION=v0.4.0
 wget https://github.com/deislabs/wagi/releases/download/$VERSION/wagi-$VERSION-linux-amd64.tar.gz
 sudo tar -C /usr/local/bin/ -xzf wagi-$VERSION-linux-amd64.tar.gz
 
-echo "bindle..."
+echo "# bindle..."
 wget https://bindle.blob.core.windows.net/releases/bindle-v0.6.0-linux-amd64.tar.gz
 sudo tar -C /usr/local/bin/ -xzf bindle-v0.6.0-linux-amd64.tar.gz
 sudo chown -R ubuntu:ubuntu /home/ubuntu/.config/bindle
