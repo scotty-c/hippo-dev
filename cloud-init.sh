@@ -35,7 +35,7 @@ echo "# bindle..."
 wget https://bindle.blob.core.windows.net/releases/bindle-v0.6.0-linux-amd64.tar.gz
 sudo tar -C /usr/local/bin/ -xzf bindle-v0.6.0-linux-amd64.tar.gz
 sudo chown -R ubuntu:ubuntu /home/ubuntu/.config/bindle
-bindle-server --unauthenticated &
+nohup bindle-server --unauthenticated &
 
 echo "# hipo..."
 git clone https://github.com/deislabs/hippo.git
