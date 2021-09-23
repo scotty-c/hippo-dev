@@ -35,7 +35,28 @@ echo "# bindle..."
 wget https://bindle.blob.core.windows.net/releases/bindle-v0.6.0-linux-amd64.tar.gz
 sudo tar -C /usr/local/bin/ -xzf bindle-v0.6.0-linux-amd64.tar.gz
 sudo chown -R ubuntu:ubuntu /home/ubuntu/.config/bindle
-bindle-server --unauthenticated </dev/null &>/dev/null
+
+echo "# bindle daemon file..."
+sudo tee -a /etc/systemd/system/bindle.service <<'EOF'
+[Unit]
+Description=Bindle server
+[Service]
+Restart=on-failure
+RestartSec=5s
+ExecStart=/usr/local/bin/bindle-server --unauthenticated
+User=ubuntu
+Group=ubuntu
+[Install]
+WantedBy=multi-user.target
+EOF
+sudo chmod +x /etc/systemd/system/bindle.service
+
+echo "# starting bindle ..."
+sudo systemctl enable bindle
+sudo systemctl start bindle
+
+echo "# waiting for bindle to start ..."            
+sleep 5 # wait for bindle to start
 
 echo "# hipo..."
 git clone https://github.com/deislabs/hippo.git
