@@ -34,6 +34,7 @@ sudo tar -C /usr/local/bin/ -xzf wagi-$VERSION-linux-amd64.tar.gz
 echo "# bindle..."
 wget https://bindle.blob.core.windows.net/releases/bindle-v0.6.0-linux-amd64.tar.gz
 sudo tar -C /usr/local/bin/ -xzf bindle-v0.6.0-linux-amd64.tar.gz
+sudo mkdir -p /home/ubuntu/.config/bindle
 sudo chown -R ubuntu:ubuntu /home/ubuntu/.config/bindle
 
 echo "# bindle daemon file..."
