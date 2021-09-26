@@ -16,7 +16,7 @@ curl -L -o cloud-init.txt 'https://raw.githubusercontent.com/scotty-c/hipo-dev/m
 az vm create \
   --resource-group "$RS" \
   --name $NAME \
-  --image UbuntuLTS \
+  --image Canonical:0001-com-ubuntu-server-focal:20_04-lts:latest \
   --size  Standard_B2S \
   --custom-data cloud-init.txt \
   --admin-username ubuntu \

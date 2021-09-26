@@ -16,3 +16,16 @@ Once that is finshed you can enter the shell by running the following command
 ```
 multipass shell hipo-server
 ```
+## Running on Azure
+To run this on Azure we will use exactly the same code. We will make the assumption that you have the [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?WT.mc_id=opensource-0000-sccoulto) that is signed into to your subscription. 
+
+Then just run the script `./deploy-azure.sh`  
+The script will ask you a couple of questions 
+```
+Enter the subscription to use: 
+Enter the resource group for the vm: 
+Enter the name for the vm:
+```
+Then print out the instructions to access the server.  
+Once you have access to the servers shell just `tail -f output.txt`  
+The MOTD will give you the rest of the instructions. 
