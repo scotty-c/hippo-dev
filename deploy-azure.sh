@@ -21,7 +21,8 @@ az vm create \
   --custom-data cloud-init.txt \
   --admin-username ubuntu \
   --ssh-key-values ~/.ssh/id_rsa.pub
-   
+ 
+az vm open-port --port 5001 --resource-group $RS --name $NAME
 
 IP=$(az vm show -d  --resource-group $RS --name $NAME --query publicIps -o tsv
 )
