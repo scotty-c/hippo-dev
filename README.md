@@ -1,7 +1,36 @@
 # Hipo - PaaS
 
 ## Introduction
-TODO
+Hippo is the easiest way to deploy and serve applications compiled to
+[WebAssembly](https://webassembly.org/).
+
+**WARNING:** This is experimental code. It is not considered production-grade
+by its developers, nor is it "supported" software.
+
+> DeisLabs is experimenting with many WASM technologies right now. This is one
+> of a multitude of projects (including
+> [Krustlet](https://github.com/deislabs/krustlet)) designed to test the limits
+> of WebAssembly as a cloud-based runtime.
+
+Hippo takes a fresh spin on the PaaS ecosystem, taking advantage of the
+technology WebAssembly brings to the space.
+
+Hippo works like this: A WebAssembly package is bundled up as a
+[bindle](https://github.com/deislabs/bindle). Bindles are collected together in
+a bindle server that you can search. Hippo uses bindle under the hood for
+storing and organizing applications.
+
+Hippo provides a web interface for users to register new accounts, access their
+applications, and create new environments for testing.
+
+Hippo makes it easy to run WebAssembly applications and services at scale.
+
+## Documentation
+
+If you're new to the project, get started with [the
+introduction](https://docs.hippofactory.dev/intro/). For more in-depth
+information about Hippo, plunge right into the [topic
+guides](https://docs.hippofactory.dev/topics/).
 
 ## Running locally 
 When running the server locally you will need to install [multipass](https://multipass.run/).  
