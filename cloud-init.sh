@@ -59,6 +59,10 @@ sudo systemctl start bindle
 echo "# waiting for bindle to start ..."            
 sleep 5 # wait for bindle to start
 
+echo "# yo-wasm..."
+npm install -g yo
+npm install -g generator-wasm
+
 echo "# hipo..."
 git clone https://github.com/deislabs/hippo.git
 cd hippo/Hippo
@@ -68,9 +72,5 @@ export BINDLE_URL=http://localhost:8080/v1
 dotnet run
 wget https://github.com/deislabs/hippo-cli/releases/download/v0.9.0/hippo-v0.9.0-linux-amd64.tar.gz
 sudo tar -C /usr/local/bin/ -xzf hippo-v0.9.0-linux-amd64.tar.gz
-
-echo "# yo-wasm..."
-npm install -g yo
-npm install -g generator-wasm
 
 echo "# complete!"
