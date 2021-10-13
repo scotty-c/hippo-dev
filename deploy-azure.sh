@@ -28,11 +28,9 @@ IP=$(az vm show -d  --resource-group $RS --name $NAME --query publicIps -o tsv
 )
 
 echo "Access your vm with  ssh ubuntu@$IP"
-echo "###################################"
 echo ""
 echo "To access the Hippo dashboard https://$IP:5001"
 echo ""
-echo "Please note the dashboard will take a few minutes"
-echo "as we are building it from source"
+echo "Please note the dashboard will take a few minutes as we are building it from source"
 
 rm cloud-init.txt
