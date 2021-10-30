@@ -10,7 +10,7 @@ sudo apt install -y \
          pkg-config
 
 echo "# nodejs"
-curl -o https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" 
@@ -86,6 +86,7 @@ npm run build
 dotnet build
 cp -r wwwroot /home/ubuntu/hippo/Hippo/bin/Debug/net5.0/
 
+
 echo "# hippo daemon file..."
 sudo tee -a /etc/systemd/system/hippo.service <<'EOF'
 [Unit]
@@ -95,16 +96,18 @@ Restart=on-failure
 RestartSec=5s
 Environment=BINDLE_URL=http://localhost:8080/v1
 Environment=ASPNETCORE_ENVIRONMENT=Development
+Environment=HOME=/home/ubuntu
 WorkingDirectory=/home/ubuntu/hippo/Hippo/bin/Debug/net5.0/
 ExecStart=/home/ubuntu/hippo/Hippo/bin/Debug/net5.0/hippo-server
-User=ubuntu
-Group=ubuntu
+User=root
+Group=root
 [Install]
 WantedBy=multi-user.target
 EOF
+
 sudo chmod +x /etc/systemd/system/hippo.service
 
-echo "# starting bindle ..."
+echo "# starting hippo ..."
 sudo systemctl enable hippo
 sudo systemctl start hippo
 
