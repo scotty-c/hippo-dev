@@ -7,6 +7,7 @@ echo "# make..."
 sudo apt update 
 sudo apt install -y \
          git \
+         build-essential \
          pkg-config
 
 echo "# nodejs"
@@ -50,7 +51,7 @@ Description=Bindle server
 [Service]
 Restart=on-failure
 RestartSec=5s
-ExecStart=/usr/local/bin/bindle-server --unauthenticated
+ExecStart=/usr/local/bin/bindle-server --unauthenticated --address 0.0.0.0:8080
 User=ubuntu
 Group=ubuntu
 [Install]
@@ -80,7 +81,9 @@ sudo tar -C /usr/local/bin/ -xzf hippo-v0.9.0-linux-amd64.tar.gz
 
 echo "# hippo..."
 git clone https://github.com/deislabs/hippo.git
-cd hippo/Hippo
+cd hippo
+git checkout tags/v0.1.0 -b localdev
+cd Hippo
 dotnet restore
 npm run build
 dotnet build
